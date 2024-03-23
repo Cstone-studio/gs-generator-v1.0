@@ -1,0 +1,1 @@
+# gs-generator-v1.0
