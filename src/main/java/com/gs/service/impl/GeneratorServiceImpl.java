@@ -47,7 +47,7 @@ public class GeneratorServiceImpl implements GeneratorService {
     }
 
     @Override
-    public Object getColumns(String name) {
+    public List<ColumnInfo> getColumns(String name) {
         StringBuilder sql = new StringBuilder("select column_name, is_nullable, data_type, column_comment, column_key from information_schema.columns where ");
         if(!ObjectUtils.isEmpty(name)){
             sql.append("table_name = '"+name+"' ");
@@ -59,16 +59,13 @@ public class GeneratorServiceImpl implements GeneratorService {
         for (Object[] obj : result) {
             columnInfos.add(new ColumnInfo(obj[0],obj[1],obj[2],obj[3],obj[4],null,"true"));
         }
-        return PageUtils.toPage(columnInfos,columnInfos.size());
+        return columnInfos;
     }
 
     @Override
-    public void generator(List<ColumnInfo> columnInfos, GenConfig genConfig, String tableName) {
-//        if(genConfig.getId() == null){
-//            throw new BadRequestException("请先配置生成器");
-//        }
+    public void generator(GenConfig genConfig, String tableName) {
         try {
-            GenUtils.generatorCode(columnInfos,genConfig,tableName);
+            GenUtils.generatorCode(getColumns(tableName), genConfig, tableName);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

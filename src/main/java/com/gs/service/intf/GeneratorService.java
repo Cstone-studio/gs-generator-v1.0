@@ -20,13 +20,12 @@ public interface GeneratorService {
      * @param name
      * @return
      */
-    Object getColumns(String name);
+    List<ColumnInfo> getColumns(String name);
 
     /**
      * 生成代码
-     * @param columnInfos
      * @param genConfig
      * @param tableName
      */
-    void generator(List<ColumnInfo> columnInfos, GenConfig genConfig, String tableName);
+    void generator(GenConfig genConfig, String tableName);
 }

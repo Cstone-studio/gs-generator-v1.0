@@ -37,13 +37,13 @@ public class GenUtils {
     public static List<String> getAdminTemplateNames() {
         List<String> templateNames = new ArrayList<>();
         templateNames.add("Entity");
-        templateNames.add("Dto");
-        templateNames.add("Mapper");
-        templateNames.add("Repository");
-        templateNames.add("Service");
-        templateNames.add("ServiceImpl");
-        templateNames.add("QueryService");
-        templateNames.add("Controller");
+//        templateNames.add("Dto");
+//        templateNames.add("Mapper");
+//        templateNames.add("Repository");
+//        templateNames.add("Service");
+//        templateNames.add("ServiceImpl");
+//        templateNames.add("QueryService");
+//        templateNames.add("Controller");
         return templateNames;
     }
 
@@ -53,11 +53,11 @@ public class GenUtils {
      */
     public static List<String> getFrontTemplateNames() {
         List<String> templateNames = new ArrayList<>();
-        templateNames.add("api");
+//        templateNames.add("api");
         templateNames.add("index");
-        templateNames.add("header");
-        templateNames.add("edit");
-        templateNames.add("eForm");
+//        templateNames.add("header");
+//        templateNames.add("edit");
+//        templateNames.add("eForm");
         return templateNames;
     }
 
