@@ -18,15 +18,21 @@ import java.math.BigDecimal;
 @Data
 @ToString
 public class ${className}PageDTO extends BasePage {
+
+    @Schema(name = "keywords")
+    private String keywords;
 <#if columns??>
     <#list columns as column>
-        <#if column.columnComment != ''>
+        <#assign baseColumns = ["id", "deleted", "createTime", "createUser", "updateTime", "updateUser"]>
+        <#if !baseColumns?seq_contains(column.changeColumnName)>
+            <#if column.columnComment != ''>
     /**
     * ${column.columnComment}
     */
-        </#if>
+            </#if>
     @Schema(name = "${column.changeColumnName}")
     private ${column.columnType} ${column.changeColumnName};
+        </#if>
     </#list>
 </#if>
 }

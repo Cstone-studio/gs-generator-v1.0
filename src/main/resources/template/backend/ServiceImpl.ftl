@@ -64,9 +64,16 @@ public class ${className}ServiceImpl implements ${className}Service {
     @Override
     public IPageModel<${className}DTO> list(${className}PageDTO param, Pageable pageable) {
         Page<${className}> ${changeClassName}Page = ${changeClassName}Repository.findAll(
-                Specification.where(${changeClassName}Specification.mobileLike(param.getMobile()))
-                        .and(${changeClassName}Specification.userNameEqualsTo(param.getUserName())
-                        .and(${changeClassName}Specification.emailNotEqualsTo(param.getEmail()))), pageable
+                Specification.where(${changeClassName}Specification.searchKey(param.getKeywords()))
+                <#if columns??>
+                    <#list columns as column>
+                        <#assign baseColumns = ["id", "deleted", "createTime", "createUser", "updateTime", "updateUser"]>
+                        <#if !baseColumns?seq_contains(column.changeColumnName)>
+                        .and(${changeClassName}Specification.${column.changeColumnName}Like(param.get${column.changeColumnName?cap_first}()))
+                        </#if>
+                    </#list>
+                </#if>
+            , pageable
         );
 
         return GsUtils.pageConvert(${changeClassName}Page.map(entity -> ${changeClassName}Convert.toDto(entity)));

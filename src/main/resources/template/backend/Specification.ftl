@@ -19,7 +19,7 @@ public class ${className}Specification<T> {
             Predicate[] predicates = {
             <#if columns??>
                 <#list columns as column>
-                    <#assign baseColumns = ["deleted", "createTime", "createUser", "updateTime", "updateUser"]>
+                    <#assign baseColumns = ["id", "deleted", "createTime", "createUser", "updateTime", "updateUser"]>
                     <#if !baseColumns?seq_contains(column.changeColumnName)>
                     builder.like(root.get("${column.changeColumnName}"), "%" + keyword + "%"),
 
@@ -34,9 +34,9 @@ public class ${className}Specification<T> {
 
     <#if columns??>
         <#list columns as column>
-            <#assign baseColumns = ["deleted", "createTime", "createUser", "updateTime", "updateUser"]>
+            <#assign baseColumns = ["id", "deleted", "createTime", "createUser", "updateTime", "updateUser"]>
             <#if !baseColumns?seq_contains(column.changeColumnName)>
-    public org.springframework.data.jpa.domain.Specification<T> ${column.changeColumnName}Like(String ${column.changeColumnName}) {
+    public org.springframework.data.jpa.domain.Specification<T> ${column.changeColumnName}Like(${column.columnType} ${column.changeColumnName}) {
         return (root, query, builder) -> StringUtils.isEmpty(${column.changeColumnName}) ? builder.conjunction() : builder.like(root.get("${column.changeColumnName}"), "%" + ${column.changeColumnName} + "%");
     }
             </#if>
