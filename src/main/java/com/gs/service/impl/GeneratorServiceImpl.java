@@ -1,7 +1,6 @@
 package com.gs.service.impl;
 
-import com.gs.common.BadRequestException;
-import com.gs.model.entity.jpa.db1.GenConfig;
+import com.gs.config.GenConfig;
 import com.gs.model.entity.jpa.db1.vo.ColumnInfo;
 import com.gs.model.entity.jpa.db1.vo.TableInfo;
 import com.gs.service.intf.GeneratorService;
@@ -65,9 +64,9 @@ public class GeneratorServiceImpl implements GeneratorService {
 
     @Override
     public void generator(List<ColumnInfo> columnInfos, GenConfig genConfig, String tableName) {
-        if(genConfig.getId() == null){
-            throw new BadRequestException("请先配置生成器");
-        }
+//        if(genConfig.getId() == null){
+//            throw new BadRequestException("请先配置生成器");
+//        }
         try {
             GenUtils.generatorCode(columnInfos,genConfig,tableName);
         } catch (IOException e) {

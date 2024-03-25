@@ -1,10 +1,10 @@
 package com.gs.controller;
 
-import cn.hutool.core.util.PageUtil;
 import com.gs.common.BadRequestException;
+import com.gs.config.GenConfig;
 import com.gs.model.entity.jpa.db1.vo.ColumnInfo;
-import com.gs.service.intf.GenConfigService;
 import com.gs.service.intf.GeneratorService;
+import com.gs.utils.PageUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
@@ -20,11 +20,11 @@ public class GeneratorController extends BaseController {
     @Autowired
     private GeneratorService generatorService;
 
-    @Autowired
-    private GenConfigService genConfigService;
-
     @Value("${generator.enabled}")
     private Boolean generatorEnabled;
+
+    @Autowired
+    private GenConfig genConfig;
 
     /**
      * 查询数据库元数据
@@ -37,7 +37,7 @@ public class GeneratorController extends BaseController {
     public ResponseEntity getTables(@RequestParam(defaultValue = "") String name,
                                    @RequestParam(defaultValue = "0")Integer page,
                                    @RequestParam(defaultValue = "10")Integer size){
-        int[] startEnd = PageUtil.transToStartEnd(page+1, size);
+        int[] startEnd = PageUtils.transToStartEnd(page+1, size);
         return new ResponseEntity(generatorService.getTables(name,startEnd), HttpStatus.OK);
     }
 
@@ -61,7 +61,7 @@ public class GeneratorController extends BaseController {
         if(!generatorEnabled){
             throw new BadRequestException("此环境不允许生成代码！");
         }
-        generatorService.generator(columnInfos,genConfigService.find(),tableName);
+        generatorService.generator(columnInfos, genConfig, tableName);
         return new ResponseEntity(HttpStatus.OK);
     }
 }

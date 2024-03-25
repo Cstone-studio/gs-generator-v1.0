@@ -1,6 +1,6 @@
 package com.gs.service.intf;
 
-import com.gs.model.entity.jpa.db1.GenConfig;
+import com.gs.config.GenConfig;
 import com.gs.model.entity.jpa.db1.vo.ColumnInfo;
 
 import java.util.List;

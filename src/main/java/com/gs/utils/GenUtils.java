@@ -2,7 +2,7 @@ package com.gs.utils;
 
 import cn.hutool.core.io.FileUtil;
 import cn.hutool.extra.template.*;
-import com.gs.model.entity.jpa.db1.GenConfig;
+import com.gs.config.GenConfig;
 import com.gs.model.entity.jpa.db1.vo.ColumnInfo;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.util.ObjectUtils;
@@ -118,13 +118,13 @@ public class GenUtils {
         // 生成后端代码
         List<String> templates = getAdminTemplateNames();
         for (String templateName : templates) {
-            Template template = engine.getTemplate("generator/admin/"+templateName+".ftl");
+            Template template = engine.getTemplate("backend/"+templateName+".ftl");
             String filePath = getAdminFilePath(templateName,genConfig,className);
 
             File file = new File(filePath);
 
             // 如果非覆盖生成
-            if(!genConfig.getCover()){
+            if(genConfig.getCover().equals("false")){
                 if(FileUtil.exist(file)){
                     continue;
                 }
@@ -136,13 +136,13 @@ public class GenUtils {
         // 生成前端代码
         templates = getFrontTemplateNames();
         for (String templateName : templates) {
-            Template template = engine.getTemplate("generator/front/"+templateName+".ftl");
+            Template template = engine.getTemplate("frontend/"+templateName+".ftl");
             String filePath = getFrontFilePath(templateName,genConfig,map.get("changeClassName").toString());
 
             File file = new File(filePath);
 
             // 如果非覆盖生成
-            if(!genConfig.getCover()){
+            if(genConfig.getCover().equals("false")){
                 if(FileUtil.exist(file)){
                     continue;
                 }

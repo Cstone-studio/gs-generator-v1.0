@@ -27,3 +27,9 @@ logging:
               BasicBinder: TRACE
 generator:
   enabled: true
+  pack: com.gs
+  moduleName: gs
+  path: frontend
+  apiPath: backend
+  cover: true
+  author: liuchengyao85@gmail.com
