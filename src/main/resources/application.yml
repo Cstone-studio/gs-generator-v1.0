@@ -1,0 +1,29 @@
+spring:
+  profiles:
+    active: dev
+server:
+  port: 8083
+  servlet:
+    encoding:
+      charset: UTF-8
+      force: true
+      enabled: true
+application:
+  security:
+    jwt:
+      secret-key: TtGNShc8FQrpRdANi4vl5ik5yTP6GVQXTtGNShc8FQrpRdANi4vl5ik5yTP6GVQX
+      expiration: 86400000 # a day
+      refresh-token:
+        expiration: 604800000 # 7 days
+
+logging:
+  level:
+    org:
+      hibernate:
+        SQL: DEBUG
+        type:
+          descriptor:
+            sql:
+              BasicBinder: TRACE
+generator:
+  enabled: true
