@@ -43,7 +43,7 @@ public class GenUtils {
         templateNames.add("Service");
         templateNames.add("PageDTO");
         templateNames.add("ServiceImpl");
-//        templateNames.add("QueryService");
+        templateNames.add("Specification");
         templateNames.add("Controller");
         return templateNames;
     }
@@ -186,8 +186,8 @@ public class GenUtils {
             return packagePath + "convert" + File.separator + className + "Convert.java";
         }
 
-        if ("QueryService".equals(templateName)) {
-            return packagePath + "convert" + File.separator + "query" + File.separator + className + "QueryService.java";
+        if ("Specification".equals(templateName)) {
+            return packagePath + "repository" + File.separator + "jpa" + File.separator + "db1" + File.separator + "spec" + File.separator + className + "Specification.java";
         }
 
         if ("Repository".equals(templateName)) {
