@@ -40,10 +40,11 @@ public class GenUtils {
         templateNames.add("DTO");
         templateNames.add("Convert");
         templateNames.add("Repository");
-//        templateNames.add("Service");
-//        templateNames.add("ServiceImpl");
+        templateNames.add("Service");
+        templateNames.add("PageDTO");
+        templateNames.add("ServiceImpl");
 //        templateNames.add("QueryService");
-//        templateNames.add("Controller");
+        templateNames.add("Controller");
         return templateNames;
     }
 
@@ -166,11 +167,11 @@ public class GenUtils {
             return packagePath + "model" + File.separator + "entity" + File.separator + "jpa" + File.separator + "db1" + File.separator + className + ".java";
         }
         if ("Controller".equals(templateName)) {
-            return packagePath + "rest" + File.separator + className + "Controller.java";
+            return packagePath + "controller" + File.separator + className + "Controller.java";
         }
 
         if ("Service".equals(templateName)) {
-            return packagePath + "service" + File.separator + className + "Service.java";
+            return packagePath + "service" + File.separator + "intf" + File.separator + className + "Service.java";
         }
 
         if ("ServiceImpl".equals(templateName)) {
@@ -191,6 +192,10 @@ public class GenUtils {
 
         if ("Repository".equals(templateName)) {
             return packagePath + "repository" + File.separator + "jpa" + File.separator + "db1" + File.separator + className + "Repository.java";
+        }
+
+        if ("PageDTO".equals(templateName)) {
+            return packagePath + "model" + File.separator + "dto" + File.separator + className + "PageDTO.java";
         }
 
         return null;

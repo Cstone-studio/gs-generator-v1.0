@@ -11,4 +11,5 @@ import java.util.Optional;
 * @date ${date}
 */
 public interface ${className}Repository extends JpaRepository<${className}, Integer>, JpaSpecificationExecutor<${className}>  {
+    ${className}DTO findById(Integer id);
 }

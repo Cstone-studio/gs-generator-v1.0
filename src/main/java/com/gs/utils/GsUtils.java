@@ -2,6 +2,7 @@ package com.gs.utils;
 
 import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.map.MapUtil;
+import com.gs.model.dto.base.IPageModel;
 import org.springframework.beans.BeanUtils;
 import org.springframework.data.domain.Page;
 
@@ -93,6 +94,16 @@ public class GsUtils {
         if (!end.equals(start)) {
             result.add(end);
         }
+        return result;
+    }
+
+    public static <T> IPageModel<T> pageConvert(Page<T> page) {
+        IPageModel<T> result = IPageModel.<T>builder()
+                .records(page.stream().collect(Collectors.toList()))
+                .total(page.getTotalElements())
+                .size(page.getSize())
+                .current(page.getNumber() + 1)
+                .build();
         return result;
     }
 }
