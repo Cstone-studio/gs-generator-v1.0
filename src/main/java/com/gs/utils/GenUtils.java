@@ -37,9 +37,9 @@ public class GenUtils {
     public static List<String> getAdminTemplateNames() {
         List<String> templateNames = new ArrayList<>();
         templateNames.add("Entity");
-//        templateNames.add("Dto");
-//        templateNames.add("Mapper");
-//        templateNames.add("Repository");
+        templateNames.add("DTO");
+        templateNames.add("Convert");
+        templateNames.add("Repository");
 //        templateNames.add("Service");
 //        templateNames.add("ServiceImpl");
 //        templateNames.add("QueryService");
@@ -163,9 +163,8 @@ public class GenUtils {
         }
 
         if ("Entity".equals(templateName)) {
-            return packagePath + "domain" + File.separator + className + ".java";
+            return packagePath + "model" + File.separator + "entity" + File.separator + "jpa" + File.separator + "db1" + File.separator + className + ".java";
         }
-
         if ("Controller".equals(templateName)) {
             return packagePath + "rest" + File.separator + className + "Controller.java";
         }
@@ -178,20 +177,20 @@ public class GenUtils {
             return packagePath + "service" + File.separator + "impl" + File.separator + className + "ServiceImpl.java";
         }
 
-        if ("Dto".equals(templateName)) {
-            return packagePath + "service" + File.separator + "dto" + File.separator + className + "DTO.java";
+        if ("DTO".equals(templateName)) {
+            return packagePath + "model" + File.separator + "dto" + File.separator + className + "DTO.java";
         }
 
-        if ("Mapper".equals(templateName)) {
-            return packagePath + "service" + File.separator + "mapper" + File.separator + className + "Mapper.java";
+        if ("Convert".equals(templateName)) {
+            return packagePath + "convert" + File.separator + className + "Convert.java";
         }
 
         if ("QueryService".equals(templateName)) {
-            return packagePath + "service" + File.separator + "query" + File.separator + className + "QueryService.java";
+            return packagePath + "convert" + File.separator + "query" + File.separator + className + "QueryService.java";
         }
 
         if ("Repository".equals(templateName)) {
-            return packagePath + "repository" + File.separator + className + "Repository.java";
+            return packagePath + "repository" + File.separator + "jpa" + File.separator + "db1" + File.separator + className + "Repository.java";
         }
 
         return null;

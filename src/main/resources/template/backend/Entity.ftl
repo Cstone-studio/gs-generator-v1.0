@@ -1,14 +1,16 @@
-package ${package}.domain;
+package ${package}.model.entity.jpa.db1;
 
+import jakarta.persistence.*;
 import lombok.Data;
-import javax.persistence.*;
+import lombok.ToString;
 <#if hasTimestamp>
-    import java.sql.Timestamp;
+import java.sql.Timestamp;
 </#if>
 <#if hasBigDecimal>
-    import java.math.BigDecimal;
+import java.math.BigDecimal;
 </#if>
-import java.io.Serializable;
+
+import java.util.Collection;
 
 /**
 * @author ${author}
@@ -16,12 +18,14 @@ import java.io.Serializable;
 */
 @Entity
 @Data
+@ToString
 @Table(name="${tableName}")
-public class ${className} implements Serializable {
+public class ${className} extends BaseEntity {
 <#if columns??>
     <#list columns as column>
+    <#assign baseColumns = ["deleted", "createTime", "createUser", "updateTime", "updateUser"]>
+    <#if !baseColumns?seq_contains(column.changeColumnName)>
     <#if column.columnComment != ''>
-
     /**
      * ${column.columnComment}
      */
@@ -32,6 +36,7 @@ public class ${className} implements Serializable {
     </#if>
     @Column(name = "${column.columnName}"<#if column.columnKey = 'UNI'>,unique = true</#if><#if column.isNullable = 'NO' && column.columnKey != 'PRI'>,nullable = false</#if>)
     private ${column.columnType} ${column.changeColumnName};
+    </#if>
     </#list>
 </#if>
 }
