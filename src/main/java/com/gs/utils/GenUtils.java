@@ -58,6 +58,8 @@ public class GenUtils {
         templateNames.add("Edit");
         templateNames.add("Search");
         templateNames.add("Table");
+        templateNames.add("index");
+        templateNames.add("Store");
         return templateNames;
     }
 
@@ -220,6 +222,14 @@ public class GenUtils {
 
         if ("Table".equals(templateName)) {
             return path + File.separator + className + "Table" + ".vue";
+        }
+
+        if ("index".equals(templateName)) {
+            return path  + File.separator + apiName + ".vue";
+        }
+
+        if ("Store".equals(templateName)) {
+            return path  + File.separator + apiName + "Store.ts";
         }
 
 
