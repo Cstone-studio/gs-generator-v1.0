@@ -25,7 +25,7 @@ export const use${className}Store = defineStore("${changeClassName}Store", {
         <#list columns as column>
           <#assign baseColumns = ["id", "deleted", "createTime", "createUser", "updateTime", "updateUser"]>
           <#if !baseColumns?seq_contains(column.changeColumnName)>
-      ${column.changeColumnName}:  "string",
+      ${column.changeColumnName}:  string;
           </#if>
         </#list>
       </#if>
@@ -48,7 +48,7 @@ export const use${className}Store = defineStore("${changeClassName}Store", {
         <#list columns as column>
           <#assign baseColumns = ["id", "deleted", "createTime", "createUser", "updateTime", "updateUser"]>
           <#if !baseColumns?seq_contains(column.changeColumnName)>
-      ${column.changeColumnName}:  "string",
+      ${column.changeColumnName}:  string;
           </#if>
         </#list>
       </#if>
@@ -70,7 +70,7 @@ export const use${className}Store = defineStore("${changeClassName}Store", {
         <#list columns as column>
           <#assign baseColumns = ["id", "deleted", "createTime", "createUser", "updateTime", "updateUser"]>
           <#if !baseColumns?seq_contains(column.changeColumnName)>
-      ${column.changeColumnName}:  "string",
+      ${column.changeColumnName}:  string;
           </#if>
         </#list>
       </#if>
