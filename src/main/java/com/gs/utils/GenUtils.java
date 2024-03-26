@@ -54,6 +54,7 @@ public class GenUtils {
      */
     public static List<String> getFrontTemplateNames() {
         List<String> templateNames = new ArrayList<>();
+        templateNames.add("BtnGroup");
 //        templateNames.add("api");
         templateNames.add("index");
 //        templateNames.add("header");
@@ -138,7 +139,7 @@ public class GenUtils {
         templates = getFrontTemplateNames();
         for (String templateName : templates) {
             Template template = engine.getTemplate("frontend/"+templateName+".ftl");
-            String filePath = getFrontFilePath(templateName,genConfig,map.get("changeClassName").toString());
+            String filePath = getFrontFilePath(templateName,genConfig,map.get("changeClassName").toString(), className);
 
             File file = new File(filePath);
 
@@ -204,11 +205,15 @@ public class GenUtils {
     /**
      * 定义前端文件路径以及名称
      */
-    public static String getFrontFilePath(String templateName, GenConfig genConfig, String apiName) {
+    public static String getFrontFilePath(String templateName, GenConfig genConfig, String apiName, String className) {
         String path = genConfig.getPath();
 
+        if ("BtnGroup".equals(templateName)) {
+            return path + File.separator + className + "BtnGroup" + ".vue";
+        }
+
         if ("api".equals(templateName)) {
-            return genConfig.getApiPath() + File.separator + apiName + ".js";
+            return genConfig.getApiPath() + File.separator + apiName + "BtnGroup" + ".js";
         }
 
         if ("index".equals(templateName)) {
