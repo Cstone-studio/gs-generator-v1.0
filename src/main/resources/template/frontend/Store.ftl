@@ -11,7 +11,7 @@ export const use${className}Store = defineStore("${changeClassName}Store", {
         <#list columns as column>
           <#assign baseColumns = ["id", "deleted", "createTime", "createUser", "updateTime", "updateUser"]>
           <#if !baseColumns?seq_contains(column.changeColumnName)>
-      ${column.changeColumnName}:  "",
+      ${column.changeColumnName}:"",
           </#if>
         </#list>
       </#if>
@@ -25,7 +25,7 @@ export const use${className}Store = defineStore("${changeClassName}Store", {
         <#list columns as column>
           <#assign baseColumns = ["id", "deleted", "createTime", "createUser", "updateTime", "updateUser"]>
           <#if !baseColumns?seq_contains(column.changeColumnName)>
-      ${column.changeColumnName}:  string;
+      ${column.changeColumnName}:string;
           </#if>
         </#list>
       </#if>
@@ -48,7 +48,7 @@ export const use${className}Store = defineStore("${changeClassName}Store", {
         <#list columns as column>
           <#assign baseColumns = ["id", "deleted", "createTime", "createUser", "updateTime", "updateUser"]>
           <#if !baseColumns?seq_contains(column.changeColumnName)>
-      ${column.changeColumnName}:  string;
+      ${column.changeColumnName}:string;
           </#if>
         </#list>
       </#if>
@@ -70,7 +70,7 @@ export const use${className}Store = defineStore("${changeClassName}Store", {
         <#list columns as column>
           <#assign baseColumns = ["id", "deleted", "createTime", "createUser", "updateTime", "updateUser"]>
           <#if !baseColumns?seq_contains(column.changeColumnName)>
-      ${column.changeColumnName}:  string;
+      ${column.changeColumnName}:string;
           </#if>
         </#list>
       </#if>
@@ -92,7 +92,7 @@ interface ${className}{
   <#list columns as column>
     <#assign baseColumns = ["deleted", "createTime", "createUser", "updateTime", "updateUser"]>
     <#if !baseColumns?seq_contains(column.changeColumnName)>
-  ${column.changeColumnName}: <#if column.columnType == "String">string<#elseif column.columnType == "Integer"> number </#if>
+  ${column.changeColumnName}:<#if column.columnType == "String">string<#elseif column.columnType == "Integer"> number </#if>;
     </#if>
   </#list>
 </#if>
