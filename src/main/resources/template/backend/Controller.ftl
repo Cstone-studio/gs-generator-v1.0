@@ -1,5 +1,6 @@
 package ${package}.controller;
 
+import ${package}.controller.demo.BaseController;
 import ${package}.convert.${className}Convert;
 import ${package}.model.dto.${className}DTO;
 import ${package}.model.dto.${className}PageDTO;
@@ -25,7 +26,7 @@ import java.util.Map;
 */
 @Tag(name = "${className}")
 @RestController
-@RequestMapping("api/${className}")
+@RequestMapping("api/${changeClassName}")
 @AllArgsConstructor
 @Validated
 public class ${className}Controller extends BaseController {
