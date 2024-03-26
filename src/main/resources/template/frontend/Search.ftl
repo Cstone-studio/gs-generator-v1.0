@@ -34,7 +34,7 @@ const data = reactive({
       <#list columns as column>
         <#assign baseColumns = ["id", "deleted", "createTime", "createUser", "updateTime", "updateUser"]>
         <#if !baseColumns?seq_contains(column.changeColumnName)>
-    ${column.changeColumnName}:"",
+    ${column.changeColumnName}: "",
         </#if>
       </#list>
     </#if>
