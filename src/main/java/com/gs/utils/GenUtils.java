@@ -55,11 +55,9 @@ public class GenUtils {
     public static List<String> getFrontTemplateNames() {
         List<String> templateNames = new ArrayList<>();
         templateNames.add("BtnGroup");
-//        templateNames.add("api");
-        templateNames.add("index");
-//        templateNames.add("header");
-//        templateNames.add("edit");
-//        templateNames.add("eForm");
+        templateNames.add("Edit");
+        templateNames.add("Search");
+        templateNames.add("Table");
         return templateNames;
     }
 
@@ -212,25 +210,38 @@ public class GenUtils {
             return path + File.separator + className + "BtnGroup" + ".vue";
         }
 
-        if ("api".equals(templateName)) {
-            return genConfig.getApiPath() + File.separator + apiName + "BtnGroup" + ".js";
+        if ("Edit".equals(templateName)) {
+            return path + File.separator + className + "Edit" + ".vue";
         }
 
-        if ("index".equals(templateName)) {
-            return path  + File.separator + "index.vue";
+        if ("Search".equals(templateName)) {
+            return path + File.separator + className + "Search" + ".vue";
         }
 
-        if ("header".equals(templateName)) {
-            return path  + File.separator + "module" + File.separator + "header.vue";
+        if ("Table".equals(templateName)) {
+            return path + File.separator + className + "Table" + ".vue";
         }
 
-        if ("edit".equals(templateName)) {
-            return path  + File.separator + "module" + File.separator + "edit.vue";
-        }
 
-        if ("eForm".equals(templateName)) {
-            return path  + File.separator + "module" + File.separator + "form.vue";
-        }
+//        if ("api".equals(templateName)) {
+//            return genConfig.getApiPath() + File.separator + apiName + "BtnGroup" + ".js";
+//        }
+//
+//        if ("index".equals(templateName)) {
+//            return path  + File.separator + "index.vue";
+//        }
+//
+//        if ("header".equals(templateName)) {
+//            return path  + File.separator + "module" + File.separator + "header.vue";
+//        }
+//
+//        if ("edit".equals(templateName)) {
+//            return path  + File.separator + "module" + File.separator + "edit.vue";
+//        }
+//
+//        if ("eForm".equals(templateName)) {
+//            return path  + File.separator + "module" + File.separator + "form.vue";
+//        }
         return null;
     }
 
