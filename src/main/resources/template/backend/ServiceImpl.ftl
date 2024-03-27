@@ -73,6 +73,7 @@ public class ${className}ServiceImpl implements ${className}Service {
                         </#if>
                     </#list>
                 </#if>
+                        .and(${changeClassName}Specification.deleted(false))
             , pageable
         );
 

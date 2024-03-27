@@ -42,4 +42,8 @@ public class ${className}Specification<T> {
             </#if>
         </#list>
     </#if>
+
+    public org.springframework.data.jpa.domain.Specification<T> deleted(Boolean deleted) {
+        return (root, query, builder) -> StringUtils.isEmpty(deleted) ? builder.conjunction() : builder.equal(root.get("deleted"), deleted);
+    }
 }
