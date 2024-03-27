@@ -66,14 +66,14 @@ const formRules = {
 
 const formRef = ref<FormInstance>();
 
-const use${className}Store = use${className}Store();
+const ${changeClassName}Store = use${className}Store();
 
 async function add${className}(formRef: FormInstance | undefined) {
   if (!formRef) return;
   await formRef.validate(async (valid, fields) => {
     if (valid) {
       try {
-        await use${className}Store.add${className}(data.form);
+        await ${changeClassName}Store.add${className}(data.form);
         ElNotification({
           title: "Success",
           message: "Save successfully",
