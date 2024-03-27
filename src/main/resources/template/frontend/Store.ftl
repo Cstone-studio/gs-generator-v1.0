@@ -5,7 +5,7 @@ export const use${className}Store = defineStore("${changeClassName}Store", {
     ${changeClassName}s: [] as ${className}[],
     totalElements: 0,
     page: 1,
-    rows: 20,
+    rows: 10,
     params: {
       <#if columns??>
         <#list columns as column>
@@ -37,10 +37,10 @@ export const use${className}Store = defineStore("${changeClassName}Store", {
         rows: this.rows,
       });
 
-      this.${changeClassName}s = (result as Ref<CommonListsResp>).value.result.content;
+      this.${changeClassName}s = (result as Ref<CommonListsResp>).value.result.records;
       this.totalElements = (
         result as Ref<CommonListsResp>
-      ).value.result.totalElements;
+      ).value.result.total;
     },
 
     async add${className}(params: {
