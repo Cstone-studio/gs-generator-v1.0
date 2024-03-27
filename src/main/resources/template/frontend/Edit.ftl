@@ -67,16 +67,16 @@ const formRules = {
 
 const formRef = ref<FormInstance>();
 
-const use${className}Store = use${className}Store();
+const ${changeClassName}Store = use${className}Store();
 
 const openDialog = async (row: ${className}) => {
-  await use${className}Store.get${className}Detail(row.id);
-  copyProperties(use${className}Store.${changeClassName}Detail, data.form);
+  await ${changeClassName}Store.get${className}Detail(row.id);
+  copyProperties(${changeClassName}Store.${changeClassName}Detail, data.form);
   data.dialogFormVisible = true;
 };
 
 const closeDialog = () => {
-  use${className}Store.get${className}s();
+  ${changeClassName}Store.get${className}s();
   data.dialogFormVisible = false;
   resetForm(data.form);
 };
@@ -86,7 +86,7 @@ const edit${className} = async (formRef: FormInstance | undefined) => {
   await formRef.validate(async (valid, fields) => {
     if (valid) {
       try {
-        await use${className}Store.add${className}(data.form);
+        await ${changeClassName}Store.add${className}(data.form);
         ElNotification({
           title: "Success",
           message: "Save successfully",

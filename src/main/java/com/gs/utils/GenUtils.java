@@ -209,19 +209,19 @@ public class GenUtils {
         String path = genConfig.getPath();
 
         if ("BtnGroup".equals(templateName)) {
-            return path + File.separator + "components" + File.separator + className + File.separator + className + "BtnGroup.vue";
+            return path + File.separator + "components" + File.separator + apiName + File.separator + className + "BtnGroup.vue";
         }
 
         if ("Edit".equals(templateName)) {
-            return path + File.separator + "components" + File.separator + className + File.separator + className + "Edit.vue";
+            return path + File.separator + "components" + File.separator + apiName + File.separator + className + "Edit.vue";
         }
 
         if ("Search".equals(templateName)) {
-            return path + File.separator + "components" + File.separator + className + File.separator + className + "Search.vue";
+            return path + File.separator + "components" + File.separator + apiName + File.separator + className + "Search.vue";
         }
 
         if ("Table".equals(templateName)) {
-            return path + File.separator + "components" + File.separator + className + File.separator + className + "Table.vue";
+            return path + File.separator + "components" + File.separator + apiName + File.separator + className + "Table.vue";
         }
 
         if ("index".equals(templateName)) {

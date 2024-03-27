@@ -1,5 +1,6 @@
 package com.gs;
 
+import com.gs.config.GenConfig;
 import com.gs.service.intf.GeneratorService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -14,11 +15,11 @@ public class GsTest {
     @Autowired
     private GeneratorService generatorService;
 
+    @Autowired
+    private GenConfig genConfig;
+
     @Test
     public void test() {
-
-        Object object = generatorService.getColumns("user");
-
-        System.out.println("test start");
+        generatorService.generator(genConfig, "user");
     }
 }
