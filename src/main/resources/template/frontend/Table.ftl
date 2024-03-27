@@ -3,8 +3,8 @@
     <ElITable
       :table-data="${changeClassName}Store.${changeClassName}s"
       :total="${changeClassName}Store.totalElements"
-      :current-page="${changeClassName}Store.pageNumber"
-      :page-size="${changeClassName}Store.pageSize"
+      :current-page="${changeClassName}Store.page"
+      :page-size="${changeClassName}Store.rows"
       :label-list="data.tableLabel"
       :table-loading="data.loading"
       :pagination="data.pagination"
@@ -70,7 +70,7 @@ onMounted(async () => {
 function goToDetail(row) {}
 
 function handleCurrentChange(value: number) {
-  ${changeClassName}Store.pageNumber = value;
+  ${changeClassName}Store.page = value;
   ${changeClassName}Store.get${className}s();
 }
 

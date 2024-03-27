@@ -4,8 +4,8 @@ export const use${className}Store = defineStore("${changeClassName}Store", {
   state: () => ({
     ${changeClassName}s: [] as ${className}[],
     totalElements: 0,
-    pageNumber: 1,
-    pageSize: 20,
+    page: 1,
+    rows: 20,
     params: {
       <#if columns??>
         <#list columns as column>
@@ -33,8 +33,8 @@ export const use${className}Store = defineStore("${changeClassName}Store", {
       if (params !== undefined) this.params = params;
       const { data: result } = await useQsRequest.get("/api/${changeClassName}", {
         ...this.params,
-        pageNumber: this.pageNumber,
-        pageSize: this.pageSize,
+        page: this.page,
+        rows: this.rows,
       });
 
       this.${changeClassName}s = (result as Ref<CommonListsResp>).value.result.content;
