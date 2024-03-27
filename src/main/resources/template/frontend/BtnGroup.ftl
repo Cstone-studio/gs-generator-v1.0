@@ -20,15 +20,15 @@
           </#if>
         </#list>
       </#if>
-      <template #footer>
-        <div class="dialog-footer">
-          <el-button @click="data.dialogFormVisible = false">Cancel</el-button>
-          <el-button type="primary" @click.prevent="add${className}(formRef)">
-            Confirm
-          </el-button>
-        </div>
-      </template>
     </el-form>
+    <template #footer>
+      <div class="dialog-footer">
+        <el-button @click="data.dialogFormVisible = false">Cancel</el-button>
+        <el-button type="primary" @click.prevent="add${className}(formRef)">
+          Confirm
+        </el-button>
+      </div>
+    </template>
   </el-dialog>
 </template>
 
