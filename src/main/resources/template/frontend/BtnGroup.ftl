@@ -24,7 +24,11 @@
     <template #footer>
       <div class="dialog-footer">
         <el-button @click="data.dialogFormVisible = false">Cancel</el-button>
-        <el-button type="primary" @click.prevent="add${className}(formRef)">
+        <el-button
+          :loading="data.addBtnLoading"
+          type="primary"
+          @click.prevent="add${className}(formRef)"
+        >
           Confirm
         </el-button>
       </div>
@@ -38,6 +42,7 @@ import { resetForm } from "~/composables/resetForm";
 
 const data = reactive({
   dialogFormVisible: false,
+  addBtnLoading: false,
   formLabelWidth: "140px",
   form: {
   <#if columns??>
@@ -73,7 +78,9 @@ async function add${className}(formRef: FormInstance | undefined) {
   await formRef.validate(async (valid, fields) => {
     if (valid) {
       try {
+        data.addBtnLoading = true;
         await ${changeClassName}Store.add${className}(data.form);
+        data.addBtnLoading = false;
         ElNotification({
           title: "Success",
           message: "Save successfully",

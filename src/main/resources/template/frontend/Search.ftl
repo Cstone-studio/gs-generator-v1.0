@@ -6,7 +6,7 @@
         <#list columns as column>
           <#assign baseColumns = ["id", "deleted", "createTime", "createUser", "updateTime", "updateUser"]>
           <#if !baseColumns?seq_contains(column.changeColumnName)>
-        <el-form-item label="${column.changeColumnName}">
+        <el-form-item label="<#if column.columnComment != ''>${column.columnComment}<#else>no comment in db</#if>">
           <el-input
             v-model="data.form.${column.changeColumnName}"
             style="width: 170px"

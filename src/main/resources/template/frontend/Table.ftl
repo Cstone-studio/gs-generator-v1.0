@@ -21,10 +21,10 @@
           >
 
           <el-popconfirm
-            confirm-button-text="Yes"
-            cancel-button-text="No"
+            confirm-button-text="是"
+            cancel-button-text="否"
             icon-color="#626AEF"
-            title="Are you sure to delete this?"
+            title="确定要删除吗?"
             @confirm="handleDelete(scope.$index, scope.row)"
           >
             <template #reference>
