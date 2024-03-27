@@ -1,4 +1,5 @@
 import { defineStore } from "pinia";
+import { resetForm } from "~/composables/resetForm";
 
 export const use${className}Store = defineStore("${changeClassName}Store", {
   state: () => ({
@@ -84,6 +85,11 @@ export const use${className}Store = defineStore("${changeClassName}Store", {
       await useQsRequest.delete("/api/${changeClassName}", {
         id,
       });
+    },
+
+    resetParams() {
+      resetForm(this.params);
+      this.page = 1;
     },
   },
 });

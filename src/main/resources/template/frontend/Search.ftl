@@ -20,8 +20,11 @@
       </div>
       <el-form-item>
         <el-button type="default" style="margin-bottom: 0px" @click="onSubmit"
-          >查询</el-button
-        >
+          >查询
+        </el-button>
+        <el-button type="info" style="margin-bottom: 0px" @click="reset"
+          >重置
+        </el-button>
       </el-form-item>
     </div>
   </el-form>
@@ -45,9 +48,14 @@ const ${changeClassName}Store = use${className}Store();
 
 onMounted(() => {});
 
-function onSubmit(e: MouseEvent) {
+const onSubmit = (e: MouseEvent) => {
   ${changeClassName}Store.get${className}s(data.form);
 }
+
+const reset = () => {
+  ${changeClassName}Store.resetParams();
+  ${changeClassName}Store.get${className}s();
+};
 </script>
 
 <style lang="scss" scoped>

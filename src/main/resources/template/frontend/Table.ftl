@@ -47,7 +47,7 @@ const data = reactive({
       <#list columns as column>
         <#assign baseColumns = ["deleted", "createTime", "createUser", "updateTime", "updateUser"]>
         <#if !baseColumns?seq_contains(column.changeColumnName)>
-    { prop: "${column.changeColumnName}", lable: "${column.changeColumnName}" },
+    { prop: "${column.changeColumnName}", label: <#if column.columnComment != ''>"${column.columnComment}"<#else>"no comment in db"</#if> },
         </#if>
       </#list>
     </#if>
