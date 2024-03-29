@@ -14,7 +14,7 @@
       @row-dblclick="goToDetail"
       @current-change="handleCurrentChange"
     >
-      <el-table-column>
+      <el-table-column width="200px">
         <template #default="scope">
           <el-button @click="handleEdit(scope.$index, scope.row)"
             >Edit</el-button

@@ -22,14 +22,7 @@ export const use${className}Store = defineStore("${changeClassName}Store", {
 
   actions: {
     async get${className}s(params?: {
-      <#if columns??>
-        <#list columns as column>
-          <#assign baseColumns = ["id", "deleted", "createTime", "createUser", "updateTime", "updateUser"]>
-          <#if !baseColumns?seq_contains(column.changeColumnName)>
-      ${column.changeColumnName}: string;
-          </#if>
-        </#list>
-      </#if>
+      keywords: string,
     }) {
       if (params !== undefined) this.params = params;
       const { data: result } = await useQsRequest.get("/api/${changeClassName}", {

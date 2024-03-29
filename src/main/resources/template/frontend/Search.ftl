@@ -2,21 +2,29 @@
   <el-form ref="form" :inline="true" :model="data.form">
     <div style="display: flex">
       <div style="flex: 1">
-      <#if columns??>
-        <#list columns as column>
-          <#assign baseColumns = ["id", "deleted", "createTime", "createUser", "updateTime", "updateUser"]>
-          <#if !baseColumns?seq_contains(column.changeColumnName)>
-        <el-form-item label="<#if column.columnComment != ''>${column.columnComment}<#else>no comment in db</#if>">
+        <el-form-item label="关键字">
           <el-input
-            v-model="data.form.${column.changeColumnName}"
-            style="width: 170px"
-            placeholder="Please input ${column.changeColumnName}"
-            clearable
-          />
+            v-model="data.form.keywords"
+            style="width: 300px"
+            <#if columns??>
+              <#assign columnsString = "">
+              <#list columns as column>
+                <#assign baseColumns = ["id","deleted", "createTime", "createUser", "updateTime", "updateUser"]>
+                <#if !baseColumns?seq_contains(column.changeColumnName)>
+                  <#if column.columnComment != ''>
+                    <#assign columnsString = columnsString + column.columnComment>
+                  <#else>
+                    <#assign columnsString = columnsString + "no comment in db">
+                  </#if>
+                  <#if columns?size - 6 != column?index>
+                    <#assign columnsString = columnsString + "/">
+                  </#if>
+                </#if>
+              </#list>
+              placeholder="${columnsString}"
+            </#if>
+            clearable></el-input>
         </el-form-item>
-          </#if>
-        </#list>
-      </#if>
       </div>
       <el-form-item>
         <el-button type="default" style="margin-bottom: 0px" @click="onSubmit"
@@ -33,14 +41,7 @@
 <script setup lang="ts">
 const data = reactive({
   form: {
-    <#if columns??>
-      <#list columns as column>
-        <#assign baseColumns = ["id", "deleted", "createTime", "createUser", "updateTime", "updateUser"]>
-        <#if !baseColumns?seq_contains(column.changeColumnName)>
-    ${column.changeColumnName}: "",
-        </#if>
-      </#list>
-    </#if>
+   keywords:'',
   }
 });
 
