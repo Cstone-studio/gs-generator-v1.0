@@ -27,7 +27,7 @@
             clearable></el-input>
         </el-form-item>
       </div>
-      <el-form-item>
+      <el-form-item margin-bottom="0">
         <el-button type="default" style="margin-bottom: 0px" size="small" @click="onSubmit"
           >查询
         </el-button>
