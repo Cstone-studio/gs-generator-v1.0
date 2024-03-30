@@ -1,6 +1,6 @@
 <template>
   <div>
-    <el-button type="success" plain @click="data.dialogFormVisible = true"
+    <el-button type="success" plain @click="data.dialogFormVisible = true" size="small"
       >Add</el-button
     >
   </div>

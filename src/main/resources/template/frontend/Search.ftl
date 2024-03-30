@@ -2,10 +2,11 @@
   <el-form ref="form" :inline="true" :model="data.form">
     <div style="display: flex">
       <div style="flex: 1">
-        <el-form-item label="关键字">
+        <el-form-item label="关键字" size="small">
           <el-input
             v-model="data.form.keywords"
             style="width: 300px"
+            size="small"
             <#if columns??>
               <#assign columnsString = "">
               <#list columns as column>
@@ -27,10 +28,10 @@
         </el-form-item>
       </div>
       <el-form-item>
-        <el-button type="default" style="margin-bottom: 0px" @click="onSubmit"
+        <el-button type="default" style="margin-bottom: 0px" size="small" @click="onSubmit"
           >查询
         </el-button>
-        <el-button type="info" style="margin-bottom: 0px" @click="reset"
+        <el-button type="info" style="margin-bottom: 0px" size="small" @click="reset"
           >重置
         </el-button>
       </el-form-item>
