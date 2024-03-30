@@ -5,7 +5,7 @@
     >
   </div>
   <el-dialog v-model="data.dialogFormVisible" title="Add ${className}" width="500">
-    <el-form ref="formRef" :model="data.form" :rules="formRules">
+    <el-form ref="formRef" :model="data.form" :rules="formRules" size="small">
       <#if columns??>
         <#list columns as column>
           <#assign baseColumns = ["id", "deleted", "createTime", "createUser", "updateTime", "updateUser"]>
@@ -23,11 +23,12 @@
     </el-form>
     <template #footer>
       <div class="dialog-footer">
-        <el-button @click="data.dialogFormVisible = false">Cancel</el-button>
+        <el-button @click="data.dialogFormVisible = false" size="small">Cancel</el-button>
         <el-button
           :loading="data.addBtnLoading"
           type="primary"
           @click.prevent="add${className}(formRef)"
+          size="small"
         >
           Confirm
         </el-button>
