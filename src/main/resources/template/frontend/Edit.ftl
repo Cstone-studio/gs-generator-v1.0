@@ -5,7 +5,7 @@
       title="Edit ${className}"
       width="500"
     >
-      <el-form ref="formRef" :model="data.form" :rules="formRules">
+      <el-form ref="formRef" :model="data.form" :rules="formRules" size="small">
         <#if columns??>
           <#list columns as column>
             <#assign baseColumns = ["id", "deleted", "createTime", "createUser", "updateTime", "updateUser"]>
@@ -23,8 +23,8 @@
       </el-form>
       <template #footer>
         <div class="dialog-footer">
-          <el-button @click="closeDialog">Cancel</el-button>
-          <el-button type="primary" @click.prevent="edit${className}(formRef)">
+          <el-button @click="closeDialog" size="small">Cancel</el-button>
+          <el-button type="primary" @click.prevent="edit${className}(formRef)" size="small">
             Confirm
           </el-button>
         </div>
