@@ -89,10 +89,17 @@ async function add${className}(formRef: FormInstance | undefined) {
         });
         data.dialogFormVisible = false;
         resetForm(data.form);
+        reset(); // 新增后清除检索条件并自动检索画面
       } catch (error) {
         console.log("exception occur:", error);
       }
     }
   });
 }
+
+  const reset = () => {
+    ${changeClassName}Store.resetParams();
+    ${changeClassName}Store.get${className}s();
+  };
+
 </script>
