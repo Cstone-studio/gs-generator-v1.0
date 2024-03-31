@@ -4,6 +4,10 @@ import jakarta.persistence.criteria.Predicate;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 
+<#if hasTimestamp>
+import java.sql.Timestamp;
+</#if>
+
 /**
 * @author ${author}
 * @date ${date}
