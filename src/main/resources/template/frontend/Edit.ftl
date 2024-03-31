@@ -93,11 +93,18 @@ const edit${className} = async (formRef: FormInstance | undefined) => {
           type: "success",
         });
         closeDialog();
+        reset(); // 编辑后清除检索条件并自动检索画面
       } catch (error) {
         console.log("exception occur:", error);
       }
     }
   });
+};
+
+
+const reset = () => {
+  ${changeClassName}Store.resetParams();
+  ${changeClassName}Store.get${className}s();
 };
 
 defineExpose({
