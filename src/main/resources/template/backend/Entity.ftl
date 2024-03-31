@@ -23,7 +23,7 @@ import java.util.Collection;
 public class ${className} extends BaseEntity {
 <#if columns??>
     <#list columns as column>
-    <#assign baseColumns = ["deleted", "createTime", "createUser", "updateTime", "updateUser"]>
+    <#assign baseColumns = ["id", "deleted", "createTime", "createUser", "updateTime", "updateUser"]>
     <#if !baseColumns?seq_contains(column.changeColumnName)>
     <#if column.columnComment != ''>
     /**

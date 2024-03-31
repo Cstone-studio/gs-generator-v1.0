@@ -1,6 +1,7 @@
 package ${package}.controller;
 
 import ${package}.controller.demo.BaseController;
+import ${package}.exception.IncorrectParameterException;
 import ${package}.convert.${className}Convert;
 import ${package}.model.dto.${className}DTO;
 import ${package}.model.dto.${className}PageDTO;
@@ -49,7 +50,7 @@ public class ${className}Controller extends BaseController {
 
     @Operation(summary = "edit ${changeClassName}")
     @PutMapping
-    public R update(@Validated @RequestBody ${className}DTO dto) {
+    public R update(@Validated @RequestBody ${className}DTO dto) throws IncorrectParameterException {
         ${changeClassName}Service.update(dto);
         return R.success();
     }

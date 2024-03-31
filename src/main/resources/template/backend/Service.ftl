@@ -1,6 +1,7 @@
 package ${package}.service.intf;
 
 import ${package}.model.dto.base.IPageModel;
+import ${package}.exception.IncorrectParameterException;
 import ${package}.model.dto.${className}DTO;
 import ${package}.model.dto.${className}PageDTO;
 import ${package}.model.entity.jpa.db1.${className};
@@ -25,7 +26,7 @@ public interface ${className}Service {
      *
      * @param ${className}DTO dto ${className}dto
      */
-    void update(${className}DTO dto);
+    void update(${className}DTO dto) throws IncorrectParameterException;
 
     /**
      * 删除

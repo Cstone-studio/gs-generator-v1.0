@@ -1,6 +1,7 @@
 package ${package}.service.impl;
 
 import ${package}.convert.${className}Convert;
+import ${package}.exception.IncorrectParameterException;
 import ${package}.model.dto.base.IPageModel;
 import ${package}.model.dto.${className}DTO;
 import ${package}.model.dto.${className}PageDTO;
@@ -44,10 +45,30 @@ public class ${className}ServiceImpl implements ${className}Service {
     }
 
     @Override
-    public void update(${className}DTO dto) {
+    public void update(${className}DTO dto) throws IncorrectParameterException {
 
-        ${className} ${changeClassName} = ${changeClassName}Convert.toEntity(dto);
-        ${changeClassName}Repository.save(${changeClassName});
+        if (dto.getId() == null) {
+            throw new IncorrectParameterException("id must not be null");
+        }
+
+        Optional<${className}> optional = ${changeClassName}Repository.findById(dto.getId());
+        if (optional.isPresent()) {
+            ${className} ${changeClassName} = optional.get();
+
+            <#list columns as column>
+                <#assign baseColumns = ["id", "deleted", "createTime", "createUser", "updateTime", "updateUser"]>
+                <#if !baseColumns?seq_contains(column.changeColumnName)>
+            if (dto.get${column.changeColumnName?cap_first}() != null) {
+                ${changeClassName}.set${column.changeColumnName?cap_first}(dto.get${column.changeColumnName?cap_first}());
+            }
+                </#if>
+            </#list>
+
+            ${changeClassName}Repository.save(${changeClassName});
+
+        } else {
+            throw new IncorrectParameterException("update target ${className}(id:" + String.valueOf(dto.getId()) + ") is not exist");
+        }
     }
 
     @Override

@@ -24,7 +24,7 @@ public class ${className}Specification<T> {
             <#if columns??>
                 <#list columns as column>
                     <#assign baseColumns = ["id", "deleted", "createTime", "createUser", "updateTime", "updateUser"]>
-                    <#if !baseColumns?seq_contains(column.changeColumnName)>
+                    <#if !baseColumns?seq_contains(column.changeColumnName) && !column.changeColumnName?contains("Id")>
                     builder.like(root.get("${column.changeColumnName}"), "%" + keyword + "%"),
 
                     </#if>

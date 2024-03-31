@@ -3,6 +3,7 @@ package ${package}.model.dto;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 import lombok.ToString;
 <#if hasTimestamp>
@@ -30,7 +31,11 @@ public class ${className}DTO implements Serializable {
      */
             </#if>
             <#if column.changeColumnName != "id">
+                <#if column.columnType == "String">
     @NotBlank(message = "${column.changeColumnName} is not empty")
+                <#elseif column.columnType == "Integer">
+    @NotNull(message = "${column.changeColumnName} is not null")
+                </#if>
             </#if>
     @Schema(name = "${column.changeColumnName}")
     private ${column.columnType} ${column.changeColumnName};
