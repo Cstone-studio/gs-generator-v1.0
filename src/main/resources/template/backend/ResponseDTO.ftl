@@ -7,10 +7,10 @@ import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 import lombok.ToString;
 <#if hasTimestamp>
-    import java.sql.Timestamp;
+import java.sql.Timestamp;
 </#if>
 <#if hasBigDecimal>
-    import java.math.BigDecimal;
+import java.math.BigDecimal;
 </#if>
 import java.io.Serializable;
 

@@ -66,7 +66,7 @@ public class ${className}Controller extends BaseController {
 
     @Operation(summary = "search ${changeClassName}")
     @GetMapping("/detail")
-    public R<${className}ResponseDTO> detail(Integer id) {
+    public R<${className}ResponseDTO> detail(@RequestParam("id") Integer id) {
         return R.success(${changeClassName}Service.findById(id));
     }
 

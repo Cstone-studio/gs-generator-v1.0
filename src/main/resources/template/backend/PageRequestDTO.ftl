@@ -5,10 +5,10 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 import lombok.ToString;
 <#if hasTimestamp>
-    import java.sql.Timestamp;
+import java.sql.Timestamp;
 </#if>
 <#if hasBigDecimal>
-    import java.math.BigDecimal;
+import java.math.BigDecimal;
 </#if>
 
 /**

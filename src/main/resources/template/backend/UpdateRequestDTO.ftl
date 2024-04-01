@@ -30,13 +30,11 @@ public class ${className}UpdateRequestDTO implements Serializable {
      * ${column.columnComment}
      */
             </#if>
-
             <#if column.columnType == "String">
     @NotBlank(message = "${column.changeColumnName} is not empty")
             <#elseif column.columnType == "Integer">
     @NotNull(message = "${column.changeColumnName} is not null")
             </#if>
-
     @Schema(name = "${column.changeColumnName}")
     private ${column.columnType} ${column.changeColumnName};
         </#if>
