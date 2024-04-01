@@ -1,4 +1,4 @@
-package ${package}.model.dto;
+package ${package}.model.dto.response;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.Email;
@@ -7,20 +7,20 @@ import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 import lombok.ToString;
 <#if hasTimestamp>
-import java.sql.Timestamp;
+    import java.sql.Timestamp;
 </#if>
 <#if hasBigDecimal>
-import java.math.BigDecimal;
+    import java.math.BigDecimal;
 </#if>
 import java.io.Serializable;
 
 /**
- * @author ${author}
- * @date ${date}
- */
+* @author ${author}
+* @date ${date}
+*/
 @Data
 @ToString
-public class ${className}DTO implements Serializable {
+public class ${className}ResponseDTO implements Serializable {
 <#if columns??>
     <#list columns as column>
         <#assign baseColumns = ["deleted", "createTime", "createUser", "updateTime", "updateUser"]>
@@ -29,13 +29,6 @@ public class ${className}DTO implements Serializable {
     /**
      * ${column.columnComment}
      */
-            </#if>
-            <#if column.changeColumnName != "id">
-                <#if column.columnType == "String">
-    @NotBlank(message = "${column.changeColumnName} is not empty")
-                <#elseif column.columnType == "Integer">
-    @NotNull(message = "${column.changeColumnName} is not null")
-                </#if>
             </#if>
     @Schema(name = "${column.changeColumnName}")
     private ${column.columnType} ${column.changeColumnName};

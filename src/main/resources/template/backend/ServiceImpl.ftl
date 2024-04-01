@@ -3,8 +3,10 @@ package ${package}.service.impl;
 import ${package}.convert.${className}Convert;
 import ${package}.exception.IncorrectParameterException;
 import ${package}.model.dto.base.IPageModel;
-import ${package}.model.dto.${className}DTO;
-import ${package}.model.dto.${className}PageDTO;
+import ${package}.model.dto.request.${className}PageRequestDTO;
+import ${package}.model.dto.request.${className}AddRequestDTO;
+import ${package}.model.dto.request.${className}UpdateRequestDTO;
+import ${package}.model.dto.response.${className}ResponseDTO;
 import ${package}.model.entity.jpa.db1.${className};
 import ${package}.repository.jpa.db1.${className}Repository;
 import ${package}.repository.jpa.db1.spec.${className}Specification;
@@ -39,13 +41,13 @@ public class ${className}ServiceImpl implements ${className}Service {
     private ${className}Convert ${changeClassName}Convert;
 
     @Override
-    public ${className}DTO create(${className}DTO dto) {
+    public ${className}ResponseDTO create(${className}AddRequestDTO dto) {
         ${className} ${changeClassName} = ${changeClassName}Repository.save(${changeClassName}Convert.toEntity(dto));
         return ${changeClassName}Convert.toDto(${changeClassName});
     }
 
     @Override
-    public void update(${className}DTO dto) throws IncorrectParameterException {
+    public void update(${className}UpdateRequestDTO dto) throws IncorrectParameterException {
 
         if (dto.getId() == null) {
             throw new IncorrectParameterException("id must not be null");
@@ -83,7 +85,7 @@ public class ${className}ServiceImpl implements ${className}Service {
     }
 
     @Override
-    public IPageModel<${className}DTO> list(${className}PageDTO param, Pageable pageable) {
+    public IPageModel<${className}ResponseDTO> list(${className}PageRequestDTO param, Pageable pageable) {
         Page<${className}> ${changeClassName}Page = ${changeClassName}Repository.findAll(
                 Specification.where(${changeClassName}Specification.searchKey(param.getKeywords()))
                 <#if columns??>
@@ -102,7 +104,7 @@ public class ${className}ServiceImpl implements ${className}Service {
     }
 
     @Override
-    public ${className}DTO findById(Integer id) {
+    public ${className}ResponseDTO findById(Integer id) {
         return ${changeClassName}Repository.findById(id).map(${changeClassName} -> ${changeClassName}Convert.toDto(${changeClassName})).orElse(null);
     }
 }

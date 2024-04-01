@@ -37,14 +37,16 @@ public class GenUtils {
     public static List<String> getAdminTemplateNames() {
         List<String> templateNames = new ArrayList<>();
         templateNames.add("Entity");
-        templateNames.add("DTO");
         templateNames.add("Convert");
         templateNames.add("Repository");
         templateNames.add("Service");
-        templateNames.add("PageDTO");
         templateNames.add("ServiceImpl");
         templateNames.add("Specification");
         templateNames.add("Controller");
+        templateNames.add("PageRequestDTO");
+        templateNames.add("AddRequestDTO");
+        templateNames.add("UpdateRequestDTO");
+        templateNames.add("ResponseDTO");
         return templateNames;
     }
 
@@ -179,10 +181,6 @@ public class GenUtils {
             return packagePath + "service" + File.separator + "impl" + File.separator + className + "ServiceImpl.java";
         }
 
-        if ("DTO".equals(templateName)) {
-            return packagePath + "model" + File.separator + "dto" + File.separator + className + "DTO.java";
-        }
-
         if ("Convert".equals(templateName)) {
             return packagePath + "convert" + File.separator + className + "Convert.java";
         }
@@ -195,8 +193,20 @@ public class GenUtils {
             return packagePath + "repository" + File.separator + "jpa" + File.separator + "db1" + File.separator + className + "Repository.java";
         }
 
-        if ("PageDTO".equals(templateName)) {
-            return packagePath + "model" + File.separator + "dto" + File.separator + className + "PageDTO.java";
+        if ("PageRequestDTO".equals(templateName)) {
+            return packagePath + "model" + File.separator + "dto" + File.separator + "request" + File.separator + className + "PageRequestDTO.java";
+        }
+
+        if ("AddRequestDTO".equals(templateName)) {
+            return packagePath + "model" + File.separator + "dto" + File.separator + "request" + File.separator + className + "AddRequestDTO.java";
+        }
+
+        if ("UpdateRequestDTO".equals(templateName)) {
+            return packagePath + "model" + File.separator + "dto" + File.separator + "request" + File.separator + className + "UpdateRequestDTO.java";
+        }
+
+        if ("ResponseDTO".equals(templateName)) {
+            return packagePath + "model" + File.separator + "dto" + File.separator + "response" + File.separator + className + "ResponseDTO.java";
         }
 
         return null;

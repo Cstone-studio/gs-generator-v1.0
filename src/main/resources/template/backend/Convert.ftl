@@ -1,6 +1,9 @@
 package ${package}.convert;
 
-import ${package}.model.dto.${className}DTO;
+import ${package}.model.dto.request.${className}PageRequestDTO;
+import ${package}.model.dto.request.${className}AddRequestDTO;
+import ${package}.model.dto.request.${className}UpdateRequestDTO;
+import ${package}.model.dto.response.${className}ResponseDTO;
 import ${package}.model.entity.jpa.db1.${className};
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
@@ -15,7 +18,7 @@ import org.mapstruct.factory.Mappers;
 public interface ${className}Convert {
     ${className}Convert INSTANCE = Mappers.getMapper( ${className}Convert.class );
 
-    ${className}DTO toDto(${className} source);
+    ${className}ResponseDTO toDto(${className} source);
 
-    ${className} toEntity(${className}DTO source);
+    ${className} toEntity(${className}AddRequestDTO source);
 }

@@ -20,6 +20,6 @@ public class GsTest {
 
     @Test
     public void test() {
-        generatorService.generator(genConfig, "company");
+        generatorService.generator(genConfig, "user");
     }
 }

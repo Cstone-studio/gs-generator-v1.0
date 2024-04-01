@@ -2,8 +2,10 @@ package ${package}.service.intf;
 
 import ${package}.model.dto.base.IPageModel;
 import ${package}.exception.IncorrectParameterException;
-import ${package}.model.dto.${className}DTO;
-import ${package}.model.dto.${className}PageDTO;
+import ${package}.model.dto.request.${className}PageRequestDTO;
+import ${package}.model.dto.request.${className}AddRequestDTO;
+import ${package}.model.dto.request.${className}UpdateRequestDTO;
+import ${package}.model.dto.response.${className}ResponseDTO;
 import ${package}.model.entity.jpa.db1.${className};
 import org.springframework.data.domain.Pageable;
 
@@ -15,18 +17,13 @@ public interface ${className}Service {
 
     /**
      * 创建
-     *
-     * @param ${className}DTO dto ${className}dto
-     * @return ${className}DTO 创建成功后的dto
      */
-    ${className}DTO create(${className}DTO dto);
+    ${className}ResponseDTO create(${className}AddRequestDTO dto);
 
     /**
      * 更新
-     *
-     * @param ${className}DTO dto ${className}dto
      */
-    void update(${className}DTO dto) throws IncorrectParameterException;
+    void update(${className}UpdateRequestDTO dto) throws IncorrectParameterException;
 
     /**
      * 删除
@@ -40,7 +37,7 @@ public interface ${className}Service {
      *
      * @param param ${className}PageDTO
      */
-    IPageModel<${className}DTO> list(${className}PageDTO param, Pageable pageable);
+    IPageModel<${className}ResponseDTO> list(${className}PageRequestDTO param, Pageable pageable);
 
     /**
      * 根据id查找
@@ -48,5 +45,5 @@ public interface ${className}Service {
      * @param Integer id 主键id
      * @return ${className}DTO
      */
-    ${className}DTO findById(Integer id);
+    ${className}ResponseDTO findById(Integer id);
 }

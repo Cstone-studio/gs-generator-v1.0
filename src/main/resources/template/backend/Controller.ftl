@@ -3,8 +3,10 @@ package ${package}.controller;
 import ${package}.controller.demo.BaseController;
 import ${package}.exception.IncorrectParameterException;
 import ${package}.convert.${className}Convert;
-import ${package}.model.dto.${className}DTO;
-import ${package}.model.dto.${className}PageDTO;
+import ${package}.model.dto.request.${className}PageRequestDTO;
+import ${package}.model.dto.request.${className}AddRequestDTO;
+import ${package}.model.dto.request.${className}UpdateRequestDTO;
+import ${package}.model.dto.response.${className}ResponseDTO;
 import ${package}.model.entity.jpa.db1.${className};
 import ${package}.repository.jpa.db1.${className}Repository;
 import ${package}.service.intf.${className}Service;
@@ -43,14 +45,14 @@ public class ${className}Controller extends BaseController {
 
     @Operation(summary = "add ${changeClassName}")
     @PostMapping
-    public R add(@Validated @RequestBody ${className}DTO dto) {
+    public R add(@Validated @RequestBody ${className}AddRequestDTO dto) {
         ${changeClassName}Service.create(dto);
         return R.success();
     }
 
     @Operation(summary = "edit ${changeClassName}")
     @PutMapping
-    public R update(@Validated @RequestBody ${className}DTO dto) throws IncorrectParameterException {
+    public R update(@Validated @RequestBody ${className}UpdateRequestDTO dto) throws IncorrectParameterException {
         ${changeClassName}Service.update(dto);
         return R.success();
     }
@@ -64,13 +66,13 @@ public class ${className}Controller extends BaseController {
 
     @Operation(summary = "search ${changeClassName}")
     @GetMapping("/detail")
-    public R<${className}> detail(Integer id) {
+    public R<${className}ResponseDTO> detail(Integer id) {
         return R.success(${changeClassName}Service.findById(id));
     }
 
     @Operation(summary = "paging query ${changeClassName}")
     @GetMapping
-    public R list(${className}PageDTO params) {
+    public R list(${className}PageRequestDTO params) {
         return R.success(${changeClassName}Service.list(params, PageRequest.of(
                 params.getPage() - 1,
                 params.getRows(),
