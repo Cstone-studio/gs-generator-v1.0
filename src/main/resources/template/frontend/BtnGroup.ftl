@@ -15,7 +15,7 @@
         :label-width="data.formLabelWidth"
         prop="${column.changeColumnName}"
       >
-        <el-input v-model="data.form.${column.changeColumnName}" autocomplete="off" />
+        <el-input v-model<#if column.changeColumnName?ends_with("Id")>.number</#if>="data.form.${column.changeColumnName}" autocomplete="off" />
       </el-form-item>
           </#if>
         </#list>
@@ -64,6 +64,19 @@ const formRules = {
       <#if !baseColumns?seq_contains(column.changeColumnName)>
   ${column.changeColumnName}: [
     { required: true, trigger: "blur", message: "${column.changeColumnName} cannot be empty" },
+    <#if column.changeColumnName?ends_with("Id")>
+    {
+      type: "number",
+      trigger: "blur",
+      message: "${column.changeColumnName} must be number",
+    },
+    {
+      type: "number",
+      max: 999999999,
+      trigger: "blur",
+      message: "${column.changeColumnName} length must be less than 9 digits",
+    },
+    </#if>
   ],
       </#if>
     </#list>
