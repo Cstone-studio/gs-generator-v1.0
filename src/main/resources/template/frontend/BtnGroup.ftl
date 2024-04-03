@@ -112,6 +112,7 @@ async function add${className}(formRef: FormInstance | undefined) {
         reset(); // 新增后清除检索条件并自动检索画面
       } catch (error) {
         console.log("exception occur:", error);
+        data.addBtnLoading = false;
       }
     }
   });
