@@ -99,25 +99,18 @@ const edit${className} = async (formRef: FormInstance | undefined) => {
   await formRef.validate(async (valid, fields) => {
     if (valid) {
       try {
-        await ${changeClassName}Store.add${className}(data.form);
+        await ${changeClassName}Store.edit${className}(data.form);
         ElNotification({
           title: "Success",
           message: "Save successfully",
           type: "success",
         });
         closeDialog();
-        reset(); // 编辑后清除检索条件并自动检索画面
       } catch (error) {
         console.log("exception occur:", error);
       }
     }
   });
-};
-
-
-const reset = () => {
-  ${changeClassName}Store.resetParams();
-  ${changeClassName}Store.get${className}s();
 };
 
 defineExpose({
