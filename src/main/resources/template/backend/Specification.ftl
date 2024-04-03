@@ -7,6 +7,9 @@ import org.springframework.util.StringUtils;
 <#if hasTimestamp>
 import java.sql.Timestamp;
 </#if>
+<#if hasBigDecimal>
+import java.math.BigDecimal;
+</#if>
 
 /**
 * @author ${author}
