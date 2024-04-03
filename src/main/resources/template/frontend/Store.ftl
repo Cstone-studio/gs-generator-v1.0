@@ -86,13 +86,3 @@ export const use${className}Store = defineStore("${changeClassName}Store", {
     },
   },
 });
-interface ${className} {
-<#if columns??>
-  <#list columns as column>
-    <#assign baseColumns = ["deleted", "createTime", "createUser", "updateTime", "updateUser"]>
-    <#if !baseColumns?seq_contains(column.changeColumnName)>
-  ${column.changeColumnName}:<#if column.columnType == "String"> string<#elseif column.columnType == "Integer"> number <#elseif column.columnType == "BigDecimal"> float <#elseif column.columnType == "Timestamp"> Date</#if>;
-    </#if>
-  </#list>
-</#if>
-}

@@ -62,6 +62,7 @@ public class GenUtils {
         templateNames.add("Table");
         templateNames.add("index");
         templateNames.add("Store");
+        templateNames.add("Type");
         return templateNames;
     }
 
@@ -241,6 +242,11 @@ public class GenUtils {
         if ("Store".equals(templateName)) {
             return path  + File.separator + "stores" + File.separator + apiName + "Store.ts";
         }
+
+        if ("Type".equals(templateName)) {
+            return path  + File.separator + "types" + File.separator + className + ".d.ts";
+        }
+
         return null;
     }
 
