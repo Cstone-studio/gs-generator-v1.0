@@ -91,7 +91,7 @@ public class ${className}ServiceImpl implements ${className}Service {
                 <#if columns??>
                     <#list columns as column>
                         <#assign baseColumns = ["id", "deleted", "createTime", "createUser", "updateTime", "updateUser"]>
-                        <#if !baseColumns?seq_contains(column.changeColumnName)>
+                        <#if !baseColumns?seq_contains(column.changeColumnName) && !column.changeColumnName?contains("Id") && column.columnType != "BigDecimal" && column.columnType != "Timestamp">
                         .and(${changeClassName}Specification.${column.changeColumnName}Like(param.get${column.changeColumnName?cap_first}()))
                         </#if>
                     </#list>

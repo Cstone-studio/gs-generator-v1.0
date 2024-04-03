@@ -27,7 +27,7 @@ public class ${className}Specification<T> {
             <#if columns??>
                 <#list columns as column>
                     <#assign baseColumns = ["id", "deleted", "createTime", "createUser", "updateTime", "updateUser"]>
-                    <#if !baseColumns?seq_contains(column.changeColumnName) && !column.changeColumnName?contains("Id")>
+                    <#if !baseColumns?seq_contains(column.changeColumnName) && !column.changeColumnName?contains("Id") && column.columnType != "BigDecimal" && column.columnType != "Timestamp">
                     builder.like(root.get("${column.changeColumnName}"), "%" + keyword + "%"),
 
                     </#if>
@@ -42,7 +42,7 @@ public class ${className}Specification<T> {
     <#if columns??>
         <#list columns as column>
             <#assign baseColumns = ["id", "deleted", "createTime", "createUser", "updateTime", "updateUser"]>
-            <#if !baseColumns?seq_contains(column.changeColumnName)>
+            <#if !baseColumns?seq_contains(column.changeColumnName) && !column.changeColumnName?contains("Id") && column.columnType != "BigDecimal" && column.columnType != "Timestamp">
     public org.springframework.data.jpa.domain.Specification<T> ${column.changeColumnName}Like(${column.columnType} ${column.changeColumnName}) {
         return (root, query, builder) -> StringUtils.isEmpty(${column.changeColumnName}) ? builder.conjunction() : builder.like(root.get("${column.changeColumnName}"), "%" + ${column.changeColumnName} + "%");
     }

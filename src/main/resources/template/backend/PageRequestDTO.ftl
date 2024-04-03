@@ -24,7 +24,7 @@ public class ${className}PageRequestDTO extends BasePage {
 <#if columns??>
     <#list columns as column>
         <#assign baseColumns = ["id", "deleted", "createTime", "createUser", "updateTime", "updateUser"]>
-        <#if !baseColumns?seq_contains(column.changeColumnName)>
+        <#if !baseColumns?seq_contains(column.changeColumnName) && column.columnType != "BigDecimal" && column.columnType != "Timestamp">
             <#if column.columnComment != ''>
     /**
      * ${column.columnComment}
