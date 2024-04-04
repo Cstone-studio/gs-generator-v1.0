@@ -11,13 +11,13 @@
               <#assign columnsString = "">
               <#list columns as column>
                 <#assign baseColumns = ["id","deleted", "createTime", "createUser", "updateTime", "updateUser"]>
-                <#if !baseColumns?seq_contains(column.changeColumnName)>
+                <#if !baseColumns?seq_contains(column.changeColumnName) && column.columnType != "BigDecimal" && column.columnType != "Timestamp" && !column.changeColumnName?ends_with("Id")>
                   <#if column.columnComment != ''>
                     <#assign columnsString = columnsString + column.columnComment>
                   <#else>
                     <#assign columnsString = columnsString + "no comment in db">
                   </#if>
-                  <#if columns?size - 6 != column?index>
+                  <#if columns?size - 10 != column?index>
                     <#assign columnsString = columnsString + "/">
                   </#if>
                 </#if>
