@@ -9,20 +9,19 @@
             size="small"
             <#if columns??>
               <#assign columnsString = "">
-              <#list columns as column>
-                <#assign baseColumns = ["id","deleted", "createTime", "createUser", "updateTime", "updateUser"]>
-                <#if !baseColumns?seq_contains(column.changeColumnName) && column.columnType != "BigDecimal" && column.columnType != "Timestamp" && !column.changeColumnName?ends_with("Id")>
-                  <#if column.columnComment != ''>
-                    <#assign columnsString = columnsString + column.columnComment>
-                  <#else>
-                    <#assign columnsString = columnsString + "no comment in db">
-                  </#if>
-                  <#if columns?size - 10 != column?index>
-                    <#assign columnsString = columnsString + "/">
-                  </#if>
+              <#assign baseColumns = ["id","deleted", "createTime", "createUser", "updateTime", "updateUser"]>
+              <#assign filteredColumns = columns?filter(column -> !baseColumns?seq_contains(column.changeColumnName) && column.columnType != "BigDecimal" && column.columnType != "Timestamp" && !column.changeColumnName?ends_with("Id"))>
+              <#list filteredColumns as column>
+                <#if column.columnComment != ''>
+                  <#assign columnsString = columnsString + column.columnComment>
+                <#else>
+                  <#assign columnsString = columnsString + "no comment in db">
+                </#if>
+                <#if (filteredColumns?size-1) != column?index>
+                  <#assign columnsString = columnsString + "/">
                 </#if>
               </#list>
-              placeholder="${columnsString}"
+placeholder="${columnsString}"
             </#if>
             clearable></el-input>
         </el-form-item>
