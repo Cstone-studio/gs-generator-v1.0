@@ -10,17 +10,24 @@
         <#list columns as column>
           <#assign baseColumns = ["id", "deleted", "createTime", "createUser", "updateTime", "updateUser"]>
           <#if !baseColumns?seq_contains(column.changeColumnName)>
-      <el-form-item
-        label="${column.changeColumnName}"
-        :label-width="data.formLabelWidth"
-        prop="${column.changeColumnName}"
-      >
-        <el-input v-model<#if column.changeColumnName?ends_with("Id")>.number</#if>="data.form.${column.changeColumnName}" autocomplete="off" />
-      </el-form-item>
+            <el-form-item
+              label="${column.changeColumnName}"
+              :label-width="data.formLabelWidth"
+              prop="${column.changeColumnName}"
+            >
+            <#if column.columnType == "BigDecimal">
+              <el-input-number v-model="data.form.${column.changeColumnName}" :precision="2" :step="0.1" autocomplete="off" />
+            <#elseif column.columnType == "Timestamp">
+              <el-date-picker v-model="data.form.${column.changeColumnName}" type="datetime" placeholder="Select date and time" autocomplete="off" />
+            <#else>
+              <el-input v-model<#if column.changeColumnName?ends_with("Id")>.number</#if>="data.form.${column.changeColumnName}" autocomplete="off" />
+            </#if>
+            </el-form-item>
           </#if>
         </#list>
       </#if>
     </el-form>
+
     <template #footer>
       <div class="dialog-footer">
         <el-button @click="data.dialogFormVisible = false" size="small">Cancel</el-button>
@@ -105,6 +112,7 @@ async function add${className}(formRef: FormInstance | undefined) {
         reset(); // 新增后清除检索条件并自动检索画面
       } catch (error) {
         console.log("exception occur:", error);
+        data.addBtnLoading = false;
       }
     }
   });

@@ -5,7 +5,7 @@
         <el-form-item label="关键字" size="small">
           <el-input
             v-model="data.form.keywords"
-            style="width: 300px"
+            style="width: 150px"
             size="small"
             <#if columns??>
               <#assign columnsString = "">
