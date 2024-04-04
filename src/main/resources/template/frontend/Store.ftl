@@ -1,4 +1,4 @@
-import { defineStore } from "pinia";
+import { defineStore, acceptHMRUpdate } from "pinia";
 import { resetForm } from "~/composables/resetForm";
 
 export const use${className}Store = defineStore("${changeClassName}Store", {
@@ -86,3 +86,7 @@ export const use${className}Store = defineStore("${changeClassName}Store", {
     },
   },
 });
+
+if (import.meta.hot) {
+  import.meta.hot.accept(acceptHMRUpdate(use${className}Store, import.meta.hot));
+}
