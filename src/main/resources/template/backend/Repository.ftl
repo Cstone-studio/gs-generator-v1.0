@@ -10,5 +10,5 @@ import java.util.Optional;
 * author ${author}
 * date ${date}
 */
-public interface ${className}Repository extends JpaRepository<${className}, Integer>, JpaSpecificationExecutor<${className}>  {
+public interface ${className}Repository extends JpaRepository<${className}, String>, JpaSpecificationExecutor<${className}>  {
 }
