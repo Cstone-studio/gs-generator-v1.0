@@ -92,7 +92,7 @@ public class GenUtils {
             listMap.put("columnComment",column.getColumnComment());
             listMap.put("columnKey",column.getColumnKey());
 
-            String colType = ColUtils.cloToJava(column.getColumnType().toString());
+            String colType = ColUtils.cloToJava(column.getColumnType().toString().replace(" ", ""));
             if(PK.equals(column.getColumnKey())){
                 map.put("pkColumnType",colType);
             }

@@ -3,6 +3,7 @@ package com.gs.service.intf;
 import com.gs.config.GenConfig;
 import com.gs.model.entity.jpa.db1.vo.ColumnInfo;
 
+import java.sql.SQLException;
 import java.util.List;
 
 public interface GeneratorService {
@@ -20,7 +21,7 @@ public interface GeneratorService {
      * @param name
      * @return
      */
-    List<ColumnInfo> getColumns(String name);
+    List<ColumnInfo> getColumns(String name) throws SQLException;
 
     /**
      * 生成代码
