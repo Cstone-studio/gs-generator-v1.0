@@ -24,8 +24,8 @@ import org.springframework.util.DigestUtils;
 import java.util.Optional;
 
 /**
-* @author ${author}
-* @date ${date}
+* author ${author}
+* date ${date}
 */
 @Service
 @Transactional(propagation = Propagation.SUPPORTS, transactionManager = "transactionManager" , readOnly = true, rollbackFor = Exception.class)

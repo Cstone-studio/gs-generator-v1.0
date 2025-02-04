@@ -15,8 +15,8 @@ import java.math.BigDecimal;
 import java.io.Serializable;
 
 /**
- * @author ${author}
- * @date ${date}
+ * author ${author}
+ * date ${date}
  */
 @Data
 @ToString

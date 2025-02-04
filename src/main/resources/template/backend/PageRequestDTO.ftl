@@ -12,8 +12,8 @@ import java.math.BigDecimal;
 </#if>
 
 /**
-* @author ${author}
-* @date ${date}
+* author ${author}
+* date ${date}
 */
 @Data
 @ToString

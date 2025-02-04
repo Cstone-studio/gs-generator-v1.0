@@ -24,8 +24,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
-* @author ${author}
-* @date ${date}
+* author ${author}
+* date ${date}
 */
 @Tag(name = "${className}")
 @RestController

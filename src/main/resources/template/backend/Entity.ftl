@@ -13,8 +13,8 @@ import java.math.BigDecimal;
 import java.util.Collection;
 
 /**
-* @author ${author}
-* @date ${date}
+* author ${author}
+* date ${date}
 */
 @Entity
 @Data

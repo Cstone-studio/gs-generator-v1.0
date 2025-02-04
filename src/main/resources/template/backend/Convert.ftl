@@ -11,8 +11,8 @@ import org.mapstruct.ReportingPolicy;
 import org.mapstruct.factory.Mappers;
 
 /**
-* @author ${author}
-* @date ${date}
+* author ${author}
+* date ${date}
 */
 @Mapper(componentModel = "spring" ,unmappedTargetPolicy = ReportingPolicy.IGNORE)
 public interface ${className}Convert {

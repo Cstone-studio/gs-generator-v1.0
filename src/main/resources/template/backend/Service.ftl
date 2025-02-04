@@ -10,8 +10,8 @@ import ${package}.model.entity.jpa.db1.${className};
 import org.springframework.data.domain.Pageable;
 
 /**
-* @author ${author}
-* @date ${date}
+* author ${author}
+* date ${date}
 */
 public interface ${className}Service {
 

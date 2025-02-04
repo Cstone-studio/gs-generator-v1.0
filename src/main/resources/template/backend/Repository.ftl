@@ -7,8 +7,8 @@ import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import java.util.Optional;
 
 /**
-* @author ${author}
-* @date ${date}
+* author ${author}
+* date ${date}
 */
 public interface ${className}Repository extends JpaRepository<${className}, Integer>, JpaSpecificationExecutor<${className}>  {
 }
